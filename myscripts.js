@@ -1,3 +1,39 @@
+// initate humanChoice variable
+let humanChoice = "";
+let computerChoice = "";
+
+// add event listeners for the buttons
+const choice = document.querySelector("#buttons");
+choice.addEventListener("click", (event) => {
+    let target = event.target;
+    switch(target.id) {
+        case "rock" :
+            humanChoice = "ROCK";
+            break;
+        case "paper" :
+            humanChoice = "PAPER";
+            break;
+        case "scissors" :
+            humanChoice = "SCISSORS"
+            break;
+    }
+    computerChoice = getComputerChoice();
+    playRound(humanChoice, computerChoice);
+    outputScore(humanScore, computerScore);
+    console.log(gamesPlayed);
+    if (gamesPlayed === 5) {
+        alert("Gameover!");
+    }
+});
+const choiceRock = document.querySelector("#rock");
+const choicePaper = document.querySelector("#paper");
+const choiceScissors = document.querySelector("#scissors");
+
+// Write query selector for log and scores
+const log = document.querySelector("#log");
+const displayPlayerScore = document.querySelector("#playerScore");
+const displayComputerScore = document.querySelector("#computerScore");
+
 // Write logic to get computer choice
 // randomly choose between, paper, scissors and rock
 // Write function getComputerChoice
@@ -22,36 +58,40 @@ function getComputerChoice() {
 
 // Write logic to getHumanChoice
 
-function getHumanChoice() {
+/* function getHumanChoice() {
     let humanChoice = prompt("Choose between Rock, Paper and Scissors");
     return humanChoice.toUpperCase();
-}
+} */
 
 // Write function for when player wins
 function outputWin(humanChoice, computerChoice) {
     console.log("You win! " + humanChoice + " beats " + computerChoice + "!");
+    log.textContent = ("You win! " + humanChoice + " beats " + computerChoice + "!");
     humanScore = humanScore + 1;
 }
 
 // Write function for when player looses
 function outputLoss(humanChoice, computerChoice) {
     console.log("You loose! " + computerChoice + " beats " + humanChoice + "!");
+    log.textContent = ("You loose! " + computerChoice + " beats " + humanChoice + "!");
     computerScore = computerScore + 1;
 }
 
 // Write function for draw
 function outputDraw(humanChoice, computerChoice) {
     console.log("It is a draw. You both choose " + computerChoice + "!");
+    log.textContent = ("It is a draw. You both choose " + computerChoice + "!");
 }
 
-// Write function for unexpected output
+/* // Write function for unexpected output
 function outputError(humanChoice) {
     console.log(humanChoice + " is not a valid opiton! Please try again.");
-}
+} */
 
 // Write a function to display Scores
 function outputScore(humanScore, computerScore) {
-    console.log("Scores:");
+   displayComputerScore.textContent = computerScore;
+   displayPlayerScore.textContent = humanScore;
     console.log("You: " + humanScore);
     console.log("Computer: " + computerScore);
 }
@@ -126,22 +166,23 @@ function playRound(humanChoice , computerChoice) {
 
 }
 
-let computerChoice = getComputerChoice();
-let humanChoice = NaN;
+
 let gamesPlayed = 0;
 let keepPlaying = true;
 
-while(keepPlaying) {
+
+
+/* while(keepPlaying) {     
     if (gamesPlayed > 4) {
+        alert("Game is over!");
         keepPlaying = false;
     }
     else {
-        humanChoice = getHumanChoice();
-        playRound(humanChoice, computerChoice);
-        outputScore(humanScore, computerScore);
-        console.log("Computer Choice: " + computerChoice);
-        console.log("Human Choice: " + humanChoice);
+        
+        console.log("continue");
+        keepPlaying = true;
+       
     }
-}
+} */
 
 
